@@ -5,7 +5,7 @@ Prevalence
 [![Build Status](https://travis-ci.org/rogeriozambon/prevalence.png?branch=master)](https://travis-ci.org/rogeriozambon/prevalence)
 [![Code Climate](https://codeclimate.com/github/rogeriozambon/prevalence.png)](https://codeclimate.com/github/rogeriozambon/prevalence)
 
-Concept implementation of the Prevalence System for Ruby
+Concept implementation of the Prevalence System for Ruby.
 
 Running the tests
 -----------------
