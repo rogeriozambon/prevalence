@@ -14,6 +14,8 @@ module Prevalence
     end
 
     def write(data)
+      data = read.push(data)
+
       File.open(@path, "wb") do |file|
         file.write(JSON.generate(data))
       end
@@ -27,7 +29,7 @@ module Prevalence
       JSON.parse(snapshots)
     end
 
-    def empty?
+    def empty_file?
       has_file? && read.empty?
     end
 

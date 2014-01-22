@@ -18,7 +18,10 @@ end
 
 describe "Prevalence" do
   before do
-    @data = { name: "John Doe", age: 20 }
+    @data = {
+      "name" => "John Doe",
+      "age" => 20
+    }
 
     @person = Person.new
     @person.execute(@data)
@@ -34,7 +37,7 @@ describe "Prevalence" do
     it "with an iterator" do
       person = Prevalence::System.new(@person, storage)
       person = person.query.select do |element|
-        element[:age] == 21
+        element["age"] == 21
       end
 
       expect(person).to be_empty

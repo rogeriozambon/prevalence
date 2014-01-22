@@ -20,19 +20,17 @@ describe "FileHandler" do
     file_handler = Prevalence::FileHandler.new(storage, filename)
     file_handler.create_directory
     file_handler.create_file
-    file_handler.write([{ name: "John Doe" }])
+    file_handler.write([{ "name" => "John Doe" }])
 
-    expect(file_handler.empty?).to be_false
+    expect(file_handler.empty_file?).to be_false
   end
 
   it "read something from file" do
-    data = [{ "name" => "John Doe" }]
-
     file_handler = Prevalence::FileHandler.new(storage, filename)
     file_handler.create_directory
     file_handler.create_file
-    file_handler.write(data)
+    file_handler.write({ "name" => "John Doe" })
 
-    expect(file_handler.read).to eq(data)
+    expect(file_handler.read).to eq([{ "name" => "John Doe" }])
   end
 end
