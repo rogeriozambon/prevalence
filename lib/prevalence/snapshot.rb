@@ -12,7 +12,8 @@ module Prevalence
       @base = base
       @object = object
 
-      file_hanler.create_directory && file_hanler.create_file
+      file_hanler.create_directory
+      file_hanler.create_file
     end
 
     def create
@@ -25,7 +26,10 @@ module Prevalence
     def last
       return @object if file_hanler.empty_file?
 
-      Marshal.load(file_hanler.read.last["object"])
+      object = file_hanler.read.last["object"]
+      object = object.split(",").map(&:to_i)
+
+      Marshal.load(object.pack("C*"))
     end
 
     private
