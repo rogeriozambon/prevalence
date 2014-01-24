@@ -18,7 +18,7 @@ module Prevalence
 
     def create
       file_hanler.write({
-        "object" => Marshal.dump(@object),
+        "object" => Marshal.dump(@object).bytes.join(","),
         "created_at" => Time.now
       })
     end
