@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors       = ["Rogério Zambon"]
   s.email         = ["rogeriozambon@gmail.com"]
   s.homepage      = "http://github.com/rogeriozambon/prevalence"
-  s.summary       = "Concept implementation of the Prevalence System for Ruby."
+  s.summary       = "Concept implementation of the Prevalent System for Ruby."
   s.description   = s.summary
   s.license       = "MIT"
   s.files         = `git ls-files`.split("\n")
