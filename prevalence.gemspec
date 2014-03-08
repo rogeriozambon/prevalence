@@ -14,8 +14,6 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_dependency "json", ">= 1.8.1"
-
   s.add_development_dependency "rake", ">= 10.1.0"
   s.add_development_dependency "rspec", ">= 2.14.0"
 end

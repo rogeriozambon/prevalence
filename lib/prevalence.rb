@@ -1,20 +1,21 @@
-require "json"
+require "prevalence/dump"
 require "prevalence/file_handler"
-require "prevalence/snapshot"
+require "prevalence/transaction"
 
 module Prevalence
   class System
-    def initialize(object, base)
+    attr_reader :object
+
+    def initialize(object, path)
+      @object = Transaction.new(path).restore || object
+      @path = path
+    end
+
+    def execute(object)
+      Transaction.new(@path).write(object)
       @object = object
-      @base = base
-    end
-
-    def take_snapshot
-      Snapshot.take(@base, @object)
-    end
-
-    def recover_snapshot
-      @object = Snapshot.recover(@base, @object)
     end
   end
 end
+
+

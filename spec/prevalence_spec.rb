@@ -13,42 +13,20 @@ class Person
 end
 
 describe "Prevalence" do
-  before do
-    @data = {
-      "name" => "John Doe",
-      "age" => 20
-    }
+  it "returns the same object" do
+    prevalence = Prevalence::System.new(Person.new, filename)
 
-    @person = Person.new
-    @person << @data
+    expect(prevalence.object).to be_a(Person)
   end
 
-  describe "query interface" do
-    before do
-      Prevalence::System.new(@person, storage).take_snapshot
-    end
+  it "stores the object state" do
+    prevalence = Prevalence::System.new(Person.new, filename)
 
-    it "without an iterator" do
-      person = Prevalence::System.new(Person.new, storage).recover_snapshot
+    person = Person.new
+    person << { name: "John Doe" }
 
-      expect(person.data).to eq([@data])
-    end
+    prevalence.execute(person)
 
-    it "with an iterator" do
-      person = Prevalence::System.new(Person.new, storage).recover_snapshot
-      person = person.data.select do |element|
-        element["age"] == 21
-      end
-
-      expect(person).to be_empty
-    end
-  end
-
-  it "snapshot of object state" do
-    Prevalence::System.new(Person.new, storage).take_snapshot
-
-    person = Prevalence::System.new(Person.new, storage).recover_snapshot
-
-    expect(person.data).to be_empty
+    expect(prevalence.object.data).to eq([{ name: "John Doe" }])
   end
 end

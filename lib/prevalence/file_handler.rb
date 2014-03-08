@@ -1,44 +1,24 @@
 module Prevalence
   class FileHandler
-    def initialize(base, path)
-      @base = base
+    def initialize(path)
       @path = path
-    end
 
-    def create_directory
-      Dir.mkdir(@base) unless has_directory?
-    end
-
-    def create_file
-      File.open(@path, "wb") unless has_file?
+      create_file_to_transactions
     end
 
     def write(data)
-      data = read.push(data)
-
       File.open(@path, "wb") do |file|
-        file.write(JSON.generate(data))
+        file.write(data)
       end
     end
 
     def read
-      snapshots = File.read(@path)
-
-      return [] if snapshots.empty?
-
-      JSON.parse(snapshots)
+      File.read(@path)
     end
 
-    def empty_file?
-      has_file? && read.empty?
-    end
-
-    def has_directory?
-      File.directory?(@base)
-    end
-
-    def has_file?
-      File.exists?(@path)
+    private
+    def create_file_to_transactions
+      File.open(@path, "wb") unless File.exists?(@path)
     end
   end
 end
