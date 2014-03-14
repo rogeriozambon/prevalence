@@ -1,7 +1,6 @@
 Prevalence
 ==========
 
-[![Gem Version](https://badge.fury.io/rb/prevalence.png)](https://badge.fury.io/rb/prevalence.png)
 [![Build Status](https://travis-ci.org/rogeriozambon/prevalence.png?branch=master)](https://travis-ci.org/rogeriozambon/prevalence)
 [![Code Climate](https://codeclimate.com/github/rogeriozambon/prevalence.png)](https://codeclimate.com/github/rogeriozambon/prevalence)
 
